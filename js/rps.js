@@ -25,9 +25,13 @@ function getComputerChoice() {
     return selection[Math.floor(Math.random() * selection.length)];
 }
 
-computerSelection = getComputerChoice();
-// console.log(computerSelection);
+function getPlayerChoice() {
+    choice = prompt("What is your choice? Rock, Paper or Scissors?")
+    return choice[0].toUpperCase() + choice.substr(1).toLowerCase();
+}  
 
-playerSelection = "Rock"
+computerSelection = getComputerChoice();
+playerSelection = getPlayerChoice();
+// console.log(computerSelection);
 
 console.log(playRound(playerSelection, computerSelection));
