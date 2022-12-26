@@ -2,6 +2,21 @@
 
 const selection = ["Rock", "Paper", "Scissors"];
 
+// console.log(computerSelection);
+
+function game() {
+    let count = 1;
+    for (let i = 0; i < 5; i++) {
+        computerSelection = getComputerChoice();
+        playerSelection = getPlayerChoice();
+        console.log(`Game number ${count}`);
+        count += 1;
+        console.log(playRound(playerSelection, computerSelection));
+     }
+};
+
+
+
 function playRound(playerSelection, computerSelection) {
     if ( playerSelection == "Rock" && computerSelection == "Scissors" ) {
         return "You Win! Rock beats Scissors."
@@ -18,20 +33,16 @@ function playRound(playerSelection, computerSelection) {
     } else {
         return "Draw " + playerSelection + " & " + computerSelection
     }
-  }
-
+  };
 
 function getComputerChoice() {
     return selection[Math.floor(Math.random() * selection.length)];
-}
+};
 
 function getPlayerChoice() {
     choice = prompt("What is your choice? Rock, Paper or Scissors?")
     return choice[0].toUpperCase() + choice.substr(1).toLowerCase();
-}  
+};  
 
-computerSelection = getComputerChoice();
-playerSelection = getPlayerChoice();
-// console.log(computerSelection);
 
-console.log(playRound(playerSelection, computerSelection));
+game();
