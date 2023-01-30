@@ -1,59 +1,77 @@
-const selection = ["Rock", "Paper", "Scissors"];
 let compWinCount;
 let playerWinCount;
+let count = 1;
+let computerChoice = ""
+let playerChoice = ""
+const image = document.getElementsByClassName('image');
+
+const btn = document.querySelector("#btn");
+const finalResultPrint = document.getElementById('final-result');
+const roundResultPrint = document.getElementById('round-result');
+
+
+btn.onclick = () => game() // btn pokarze się dopiero po skończonej grze 5 rund
+
 
 function game() {
-    let count = 1;
     compWinCount = 0;
     playerWinCount = 0;
-    for (let i = 0; i < 5; i++) {
-        computerSelection = getComputerChoice();
-        playerSelection = getPlayerChoice();
-        console.log(`Game number ${count}`);
-        count += 1;
-        console.log(playRound(playerSelection, computerSelection));
-     }
-     console.log(`Total score: Player: ${playerWinCount} / Computer: ${compWinCount}`);
-     nextGame = prompt("Do you want to play once again? (y/n)")
-     if (nextGame == "y" || nextGame == "Y") {
-        game()
-     }
+    count = 1;
+    for (let i=0; i < image.length; i++ ) {
+        image[i].addEventListener('click', playerSelection)
+    }
+    roundResultPrint.textContent = "game result"
+    finalResultPrint.textContent = "final result"
+}
+
+
+function playRounds(playerChoice) {
+    const selection = ["ROCK", "PAPER", "SCISSORS"];
+    computerChoice = selection[Math.floor(Math.random() * selection.length)];
+    console.log(computerChoice, 'computer')
+    roundResult = winner(playerChoice, computerChoice);
+    roundResultPrint.textContent = `${roundResult}`
+    count += 1
+    console.log(count)
+    if (count > 5) {
+        for (let i=0; i < image.length; i++ ) {
+            image[i].removeEventListener('click', playerSelection)
+        }
+        finalResultPrint.textContent = `Computer: ${compWinCount} vs You: ${playerWinCount}`        
+        }
 };
 
-function playRound(playerSelection, computerSelection) {
-    if ( playerSelection == "Rock" && computerSelection == "Scissors" ) {
+function playerSelection(e) {
+    playerChoice = e.target.id.toUpperCase();
+    console.log(playerChoice, 'player')
+    playRounds(playerChoice) 
+}
+
+
+function winner(playerChoice, computerChoice) {
+    if ( playerChoice == "ROCK" && computerChoice == "SCISSORS" ) {
         playerWinCount += 1;
-        return "You Win! Rock beats Scissors."
-    } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+        return "You Win! ROCK beats SCISSORS."
+    } else if (playerChoice == "PAPER" && computerChoice == "ROCK") {
         playerWinCount += 1;
-        return "You Win! Paper beats Rock."
-    } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+        return "You Win! PAPER beats ROCK."
+    } else if (playerChoice == "SCISSORS" && computerChoice == "PAPER") {
         playerWinCount += 1;
-        return "You Win! Scissors beats Paper" 
-    } else if (playerSelection == "Scissors" && computerSelection == "Rock" ) {
+        return "You Win! SCISSORS beats PAPER" 
+    } else if (playerChoice == "SCISSORS" && computerChoice == "ROCK" ) {
         compWinCount += 1;
-        return "You Lose! Rock beats Scissors."
-    } else if (playerSelection == "Rock" && computerSelection == "Paper") {
+        return "You Lose! ROCK beats SCISSORS."
+    } else if (playerChoice == "ROCK" && computerChoice == "PAPER") {
         compWinCount += 1;
-        return "You Lose! Paper beats Rock."
-    } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+        return "You Lose! PAPER beats ROCK."
+    } else if (playerChoice == "PAPER" && computerChoice == "SCISSORS") {
         compWinCount += 1;
-        return "You Lose! Scissors beats Paper"
+        return "You Lose! SCISSORS beats PAPER"
     } else {
         compWinCount += 0.5;
         playerWinCount += 0.5;
-        return "Draw " + playerSelection + " & " + computerSelection
+        return "Draw " + playerChoice + " & " +  computerChoice
     }
   };
 
-function getComputerChoice() {
-    return selection[Math.floor(Math.random() * selection.length)];
-};
-
-function getPlayerChoice() {
-    choice = prompt("What is your choice? Rock, Paper or Scissors?")
-    return choice[0].toUpperCase() + choice.substr(1).toLowerCase();
-};  
-
-
-game();
+  game();

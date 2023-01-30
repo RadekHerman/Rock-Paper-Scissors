@@ -7,7 +7,48 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <header>
+        <h1> Welcome to Rock Paper Scissors</h1> 
+    </header>
+    <main>
+        <div class="section" id="introduction">
+            <h2>No one knows how you got here.. but..  win the 5 rounds match and the golden fish will grant your three wishes..</h2>
+            <h2>Please select...</h2>
+        </div>
+
+        <div class="section" id="game-images">
+            <div class="image-box">
+                <img id="rock" class="image" src="./img/rock.jpg" width="170" alt="rock">
+            </div>
+            <div class="image-box">
+                <img id="paper" class="image" src="./img/paper.jpg" width="250px" alt="paper">
+            </div>
+            <div class="image-box">
+                <img id="scissors" class="image" src="./img/scissors.jpg" width="400px" alt="rock">
+            </div>
+        </div>
+
+        <div class="section" id="selection">
+            <p>Player selection: <span id="player-selection"></span></p>
+            <p>Computer selection: <span id="computer-selection"></span></p>
+        </div>
+
+        <div class="section" id="result-section">
+            <div>
+                <h2 id="round-result">GAME RESULT</h2>
+            </div>
+            <div>
+                <h2 id="final-result">FINAL RESULT</h2>
+            </div>
+            <div>
+                <button type="button" id="btn">PLAY AGAIN</button>
+            </div>
+        </div>
+
+    </main>        
+    <footer>
+        <p>RH 2023</p>
+    </footer>
     <script type="text/javascript" src="./js/rps.js"></script>
-    
 </body>
 </html>
