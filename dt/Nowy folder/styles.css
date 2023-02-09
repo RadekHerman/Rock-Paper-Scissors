@@ -1,0 +1,18 @@
+body {
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+#game-images {
+	margin: 50px 0 20px 0;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	
+}
+
+.center-txt {
+	text-align: center;
+	
+}
+	
