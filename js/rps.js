@@ -19,16 +19,13 @@ function game() {
 		  compImage.src = "./img/blank.jpg";
 		}, 500);
 	  });
-	}
-    
+	}  
     roundResultPrint.textContent = ".................."
     finalResultPrint.textContent = ".................."
 	btn.onclick = null;
 	btn.style.cssText = 'color: lightgrey'
-	
-    
-
 }
+
 
 function computerSelection() {
     const selection = ["ROCK", "PAPER", "SCISSORS"];
@@ -38,13 +35,13 @@ function computerSelection() {
     return computerChoice
 }
 
+
 function playRounds(playerChoice) {
     
     computerChoice = computerSelection();
     roundResult = winner(playerChoice, computerChoice);
     roundResultPrint.textContent = `${roundResult}`
 	finalResultPrint.textContent = `You: ${playerWinCount} vs Computer: ${compWinCount}`
-	//console.log(compWinCount, playerWinCount)
     if (compWinCount >= 5 || playerWinCount >= 5) {
         for (let i=0; i < image.length; i++ ) {
             image[i].removeEventListener('click', playerSelection)
@@ -93,4 +90,5 @@ function winner(playerChoice, computerChoice) {
     }
   };
 
+  
   game();
